@@ -30,7 +30,7 @@ This project aims to migrate the user's personal environment configuration from 
 ### 2.2. Maintain GUI Dev Mac
 **Actor**: Developer (User)
 **Trigger**: Routine system update or configuration change.
-**Action**: User runs `darwin-rebuild switch --flake .#mac-gui`.
+**Action**: User runs either `darwin-rebuild switch --flake .#mac-aarch64` (Apple Silicon) or `.#mac-x86_64` (Intel) depending on hardware.
 **Outcome**:
 *   macOS system settings (dock, finder defaults) are applied via Nix-Darwin.
 *   Homebrew bundle integration installs Mac-specific apps (if configured).
@@ -72,7 +72,8 @@ This project aims to migrate the user's personal environment configuration from 
 ### 3.2. Host Configurations
 The Flake MUST export configurations for the following four profiles:
 1.  **`wsl-dev`**: Linux/x86_64. Focus: Performance, CLI dev tools, Docker integration.
-2.  **`mac-gui`**: Darwin/aarch64 (Apple Silicon). Focus: macOS integration, GUI apps, Dev tools.
+2.  **`mac-aarch64`**: Darwin/aarch64 (Apple Silicon). Focus: macOS integration, GUI apps, Dev tools.
+3.  **`mac-x86_64`**: Darwin/x86_64 (Intel). Focus: macOS integration, GUI apps, Dev tools.
 3.  **`debian-remote`**: Linux/x86_64. Focus: Minimalism, Admin tools, Stability.
 4.  **`debian-gui`**: Linux/x86_64. Focus: Full Desktop experience, Dev tools.
 5.  **`qubes-dev`**: Linux/x86_64 (Fedora/Debian based). Focus: Qubes integration, compartmentalized workflows.

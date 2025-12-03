@@ -15,7 +15,8 @@ This repository manages the system configuration and user environments for my pe
 | Host | OS | Description |
 | :--- | :--- | :--- |
 | `wsl-dev` | Linux (WSL2) | Primary development environment on Windows. |
-| `mac-gui` | macOS (Apple Silicon) | GUI development machine (VS Code, Browsers). |
+| `mac-aarch64` | macOS (Apple Silicon) | GUI development machine (VS Code, Browsers). |
+| `mac-x86_64` | macOS (Intel) | GUI development machine (VS Code, Browsers). |
 | `debian-remote` | Linux (Debian) | Minimal remote server config (Headless). |
 | `debian-gui` | Linux (Debian) | Native Linux desktop environment. |
 | `qubes-dev` | Linux (Fedora/Debian) | Qubes AppVM ephemeral environment. |
@@ -50,7 +51,11 @@ nix run home-manager/master -- switch --flake .#debian-remote
 To apply the Darwin system configuration:
 
 ```bash
-nix run nix-darwin -- switch --flake .#mac-gui
+# Apple Silicon
+nix run nix-darwin -- switch --flake .#mac-aarch64
+
+# Intel
+nix run nix-darwin -- switch --flake .#mac-x86_64
 ```
 
 ## Development Guidelines
@@ -69,7 +74,7 @@ nix run nix-darwin -- switch --flake .#mac-gui
 ### Adding a New Tool
 1.  **System Tool** (e.g., `jq`, `ripgrep`): Add to `modules/cli/core.nix`.
 2.  **Language Runtime** (e.g., Node 20): **DO NOT** add to Nix. Use `mise use node@20` in your project folder.
-3.  **GUI App** (Mac): Add to `casks` in `hosts/mac-gui/default.nix`.
+3.  **GUI App** (Mac): Add to `casks` in `hosts/mac-aarch64/aarch64.nix` and mirror any Intel-only casks within `hosts/mac-x86_64/x86_64.nix`.
 
 ### Secrets Management
 Secrets are NOT stored in this repo.

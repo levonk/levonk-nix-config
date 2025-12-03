@@ -11,7 +11,7 @@
 
   outputs = { self, nixpkgs, home-manager, nix-darwin, ... }:
     let
-      supportedSystems = [ "x86_64-linux" "aarch64-darwin" ];
+      supportedSystems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     {
@@ -40,14 +40,26 @@
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [ ./hosts/qubes-dev/default.nix ];
         };
+
+        # 6. NixOS Workstation
+        "nixos" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [ ./hosts/nixos/default.nix ];
+        };
       };
 
       # Mac Configuration (managed by nix-darwin)
       darwinConfigurations = {
-        # 2. Mac GUI
-        "mac-gui" = nix-darwin.lib.darwinSystem {
+        # 2. Mac GUI (Apple Silicon)
+        "mac-aarch64" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
-          modules = [ ./hosts/mac-gui/default.nix ];
+          modules = [ ./hosts/mac-aarch64/aarch64.nix ];
+        };
+
+        # 6. Mac GUI (Intel)
+        "mac-x86_64" = nix-darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          modules = [ ./hosts/mac-x86_64/x86_64.nix ];
         };
       };
 
