@@ -23,7 +23,20 @@ This repository manages the system configuration and user environments for my pe
 
 ## Quick Start
 
-### 1. Prerequisites
+### 1. Bootstrap (Recommended)
+You can bootstrap a fresh machine (install Nix, Ansible, and apply this config) with a single command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/levonk/levonk-nix-config/main/scripts/bootstrap-nix.bash | bash
+```
+
+This script will:
+1. Detect your OS (Linux, macOS).
+2. Install Ansible (via `apt`, `dnf`, `apk`, or `brew`).
+3. Install Nix (multi-user mode) using the `geerlingguy.nix` role.
+4. Clone this repository and apply the Nix configuration (unless `--no-install-config` is passed).
+
+### 2. Manual Installation
 *   **Nix**: Ensure Nix is installed (multi-user mode recommended).
     ```bash
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
@@ -34,7 +47,7 @@ This repository manages the system configuration and user environments for my pe
     echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
     ```
 
-### 2. Apply Configuration
+### 3. Apply Configuration
 
 #### Linux / WSL
 To apply the Home Manager configuration for the current user:
