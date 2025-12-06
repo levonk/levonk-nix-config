@@ -1,11 +1,9 @@
 { pkgs, ... }: {
   imports = [
-    ../../modules/cli/core.nix
-    ../../modules/shells/zsh.nix
-    ../../modules/languages/mise.nix
-    ../../modules/system/chezmoi.nix
-    ../../modules/editors/vim.nix
+    ../../modules/profiles/roles/cli.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   home.stateVersion = "23.11";
   home.username = "useracct";

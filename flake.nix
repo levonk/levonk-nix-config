@@ -13,37 +13,42 @@
     let
       supportedSystems = [ "x86_64-linux" "aarch64-darwin" "x86_64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
+      mkPkgs = system:
+        import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
     in
     {
       # Host Configurations
       homeConfigurations = {
         # 1. WSL Dev
         "wsl-dev" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hosts/wsl-dev/default.nix ];
         };
 
         # 3. Debian Remote
         "debian-remote" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hosts/debian-remote/default.nix ];
         };
 
         # 4. Debian GUI
         "debian-gui" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hosts/debian-gui/default.nix ];
         };
 
         # 5. Qubes Dev
         "qubes-dev" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hosts/qubes-dev/default.nix ];
         };
 
         # 6. NixOS Workstation
         "nixos" = home-manager.lib.homeManagerConfiguration {
-          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          pkgs = mkPkgs "x86_64-linux";
           modules = [ ./hosts/nixos/default.nix ];
         };
       };
@@ -53,12 +58,14 @@
         # 2. Mac GUI (Apple Silicon)
         "mac-aarch64" = nix-darwin.lib.darwinSystem {
           system = "aarch64-darwin";
+          pkgs = mkPkgs "aarch64-darwin";
           modules = [ ./hosts/mac-aarch64/aarch64.nix ];
         };
 
         # 6. Mac GUI (Intel)
         "mac-x86_64" = nix-darwin.lib.darwinSystem {
           system = "x86_64-darwin";
+          pkgs = mkPkgs "x86_64-darwin";
           modules = [ ./hosts/mac-x86_64/x86_64.nix ];
         };
       };

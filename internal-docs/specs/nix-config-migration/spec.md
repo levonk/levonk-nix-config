@@ -81,7 +81,10 @@ The Flake MUST export configurations for the following four profiles:
 ### 3.3. Software Parity
 The Nix configuration MUST provide a full migration of the existing toolset defined in `levonk-ansible-galaxy`. This includes:
 *   **Core Toolset**: Shell (Zsh), Editors (Vim/Neovim, VS Code (where applicable)).
-*   **Languages**: **Mise** MUST be the primary tool for managing language runtimes (Python, Node.js, Go, Rust). Nix will install Mise; Mise will manage the specific versions via `.tool-versions` or `mise.toml`.
+*   **Languages & Environments**: **Direnv + Flake.nix** MUST be the primary mechanism for managing project-specific language runtimes and environments. **Mise** is removed from the architecture.
+    *   **System**: Nix package manager installs system-wide tools.
+    *   **User Config**: Chezmoi manages dotfiles.
+    *   **Projects**: `flake.nix` + `direnv` manage per-project dependencies.
 *   **Utilities**: git, curl, wget, jq, ripgrep, bat, fzf, eza.
 *   **Extended Toolset**: All other roles/tools currently managed by Ansible MUST be audited and ported to their Nix equivalent (e.g., Docker, Kubernetes tools, cloud CLIs, specific dev libraries).
 *   **Audit Log**: A migration audit log MUST be maintained to track which Ansible roles have been ported to Nix modules.
@@ -96,7 +99,42 @@ The Nix configuration MUST provide a full migration of the existing toolset defi
 *   **Scope**: Hardening modules will manage SSH configurations, firewall rules (where applicable via NixOS/Darwin), and package restrictions.
 *   **Qubes Compatibility**: Hardening profiles must recognize Qubes-specific constraints (e.g., no direct hardware access, specialized networking).
 
-### 3.6. Testing & Validation
+### 3.6. Capability Profiles (Composition)
+To keep host definitions DRY, the repository will ship reusable capability modules that each host can import as needed:
+
+*   **CLI Profile (`modules/profiles/cli.nix`)**: Shell defaults, core CLI tools, prompt settings.
+*   **GUI Profile (`modules/profiles/gui.nix`)**: Fonts, windowing tweaks, desktop packages, browser set.
+*   **Dev Profile (`modules/profiles/dev.nix`)**: Mise bootstrap, language-adjacent helpers, container tooling.
+*   **Game Profile (`modules/profiles/game.nix`)**: Steam/Proton (where supported), GPU tooling, controller extras.
+*   **Greyhat Profile (`modules/profiles/greyhat.nix`)**: Offensive tooling (e.g., nmap, metasploit, responder) isolated from the base config. This module is opt-in and only imported by hosts that explicitly need offensive capabilities.
+
+Hosts compose these profiles plus their platform-specific modules. Profiles never inherit from each other; they remain additive building blocks.
+
+### 3.7. Security Tiers
+Security controls are managed separately from capability profiles so every persona can opt-in to the right hardening level:
+
+1.  **Baseline (`modules/security/baseline.nix`)**: Core hygiene (firewall defaults, auto-updates, logging, basic SSH tightening). Applied to every host by default.
+2.  **Hardened (`modules/security/hardened.nix`)**: Adds stricter OS policies (USB restrictions, service minimization, MFA hints, higher logging verbosity). Preferred for remote servers and Qubes templates.
+3.  **Locked (`modules/security/locked.nix`)**: Maximum restrictions for high-threat environments (e.g., enforced hardware tokens, read-only mounts, no GUI screen sharing, aggressive sandboxing). Used selectively (e.g., Greyhat AppVMs).
+
+Each host imports exactly one tier module. Offensive tooling from the Greyhat profile stays separate so hardened/locked tiers can be combined without unintentionally enabling offensive packages.
+
+### 3.8. Nix Configuration & Remote Development
+*   **Developer Machines**: To support remote development and debugging, the following Nix configuration variables MUST be set on all developer-focused hosts (`wsl-dev`, `mac-*`, `debian-gui`, `qubes-dev`):
+    *   `keep-outputs = true`
+    *   `keep-derivations = true`
+*   **Rationale**: This prevents garbage collection of build-time dependencies needed for remote builds and debugging sessions.
+
+### 3.9. Artifact Caching Strategy
+To optimize build times and bandwidth, the system MUST prioritize binary caches in the following order. This configuration should be applied early in the boot/provisioning process to maximize benefits.
+
+1.  **Priority 1 (Highest)**: **Harmonia** (Self-hosted/Local high-speed cache).
+2.  **Priority 2**: Managed NCPS (Nix Cache Proxy Services) - e.g., **Attic**, **Cachix**, **Garnix**.
+3.  **Priority 3 (Lowest)**: Fallback public caches - e.g., **NixOS.org**, other generic mirrors.
+
+The configuration must ensure that local/private caches are queried before reaching out to public upstream servers.
+
+### 3.10. Testing & Validation
 *   The Flake MUST include a `checks` output to validate configuration syntax and basic compilability.
 *   **CI Requirement**: A GitHub Actions workflow MUST be configured to:
     *   Lint Nix files.
