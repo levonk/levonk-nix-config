@@ -1,7 +1,11 @@
 { pkgs, ... }: {
   imports = [
     ../../modules/profiles/roles/cli.nix
+    ../../modules/security
   ];
+
+  # Security: Baseline for NixOS workstation
+  security.profile = "baseline";
 
   nixpkgs.config.allowUnfree = true;
 

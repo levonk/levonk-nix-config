@@ -4,7 +4,11 @@
     ../../modules/profiles/roles/gui.nix
     ../../modules/profiles/roles/dev.nix
     ../../modules/profiles/os/linux.nix
+    ../../modules/security
   ];
+
+  # Security: Baseline for desktop workstation
+  security.profile = "baseline";
 
   home.stateVersion = "23.11";
   home.username = "useracct";

@@ -24,7 +24,11 @@
       ../../modules/profiles/roles/gui.nix
       ../../modules/profiles/roles/dev.nix
       ../../modules/profiles/os/mac.nix
+      ../../modules/security
     ];
+
+    # Security: Baseline for dev workstation
+    security.profile = "baseline";
 
     home.stateVersion = "23.11";
   };

@@ -1,15 +1,21 @@
 { pkgs, ... }: {
-  home.packages = with pkgs; [
-    # Browsers
-    firefox
-    # google-chrome # unfree
+  imports = [
+    ../../components/browsers/default.nix
+    ../../components/comms/default.nix
+    ../../components/multimedia/default.nix
+    ../../components/tools/knowledge.nix
+  ];
 
+  home.packages = with pkgs; [
     # Fonts
     nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.hack
 
     # Terminals
     alacritty
-    # kitty # (managed by config?)
+    kitty
+    wezterm
   ];
 
   fonts.fontconfig.enable = true;

@@ -3,7 +3,11 @@
     ../../modules/profiles/roles/cli.nix
     ../../modules/profiles/roles/dev.nix
     ../../modules/profiles/os/linux.nix
+    ../../modules/security
   ];
+
+  # Security: Hardened for Qubes compartmentalized environment
+  security.profile = "hardened";
 
   # Qubes specific (placeholder)
   # home.sessionVariables = { ... };

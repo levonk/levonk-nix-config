@@ -91,16 +91,16 @@ We will follow a layered approach:
 ## Phase 8: Security Hardening
 **Goal**: Implement layered security profiles.
 
-- [ ] T035 Create `modules/security/baseline.nix` (firewall, auto-updates, logging)
-- [ ] T036 Create `modules/security/hardened.nix` (USB restrictions, service minimization)
-- [ ] T037 Create `modules/security/locked.nix` (hardware tokens, sandbox)
-- [ ] T038 Expose `security.profile` option and apply defaults to hosts in `flake.nix` or host modules
+- [x] T035 Create `modules/security/baseline.nix` (firewall, auto-updates, logging)
+- [x] T036 Create `modules/security/hardened.nix` (USB restrictions, service minimization)
+- [x] T037 Create `modules/security/locked.nix` (hardware tokens, sandbox)
+- [x] T038 Expose `security.profile` option and apply defaults to hosts in `flake.nix` or host modules
 
 ## Phase 9: Migration & Polish
 **Goal**: Complete the migration from Ansible by auditing and porting remaining roles.
 
-- [ ] T039 Create script to list Ansible roles and update `audit-log.md`
-- [ ] T040 Port remaining "Extended Toolset" roles to Nix modules (Batch 1)
-- [ ] T041 Port remaining "Extended Toolset" roles to Nix modules (Batch 2)
+- [x] T039 Create script to list Ansible roles and update `audit-log.md`
+- [x] T040 Port remaining "Extended Toolset" roles to Nix modules (Batch 1)
+- [x] T041 Port remaining "Extended Toolset" roles to Nix modules (Batch 2)
 - [ ] T042 Verify `audit-log.md` is 100% complete
-- [ ] T043 Final "Clean Root" verification (ensure no clutter in repo root)
+- [x] T043 Final "Clean Root" verification (ensure no clutter in repo root)
