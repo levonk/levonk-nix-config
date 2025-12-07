@@ -3,49 +3,49 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Terminal multiplexers
-    tmux
-    zellij
+    tmux       # Terminal multiplexer
+    zellij     # Modern terminal workspace/multiplexer
 
     # Modern CLI tools
-    atuin      # Shell history
-    zoxide     # Smarter cd
-    tealdeer   # tldr pages
+    atuin      # Encrypted, searchable shell history
+    zoxide     # Smarter cd with frecency
+    tealdeer   # tldr pages for quick command examples
     fd         # Better find
-    sd         # Better sed
-    procs      # Better ps
-    dust       # Better du
-    duf        # Better df
-    bottom     # Better top
-    hyperfine  # Benchmarking
-    tokei      # Code statistics
+    sd         # Intuitive sed replacement
+    procs      # Modern ps replacement
+    dust       # Disk usage analyzer (du replacement)
+    duf        # Disk usage/free space viewer (df replacement)
+    bottom     # Modern system monitor (top replacement)
+    hyperfine  # Command-line benchmarking tool
+    tokei      # Code statistics and line counting
 
     # File management
     lf         # Terminal file manager
-    yazi       # Modern file manager
+    yazi       # Blazing fast terminal file manager
 
     # Text processing
-    jq
-    yq-go
+    jq         # JSON processor
+    yq-go      # YAML processor
     gron       # Make JSON greppable
-    fx         # JSON viewer
+    fx         # Interactive JSON viewer
 
     # Archiving
-    p7zip
-    unzip
-    zip
+    p7zip      # 7-Zip compatible archiver
+    unzip      # Extract ZIP archives
+    zip        # Create ZIP archives
 
     # Networking
-    curl
-    wget
-    httpie
-    xh         # HTTPie alternative
+    curl       # HTTP client
+    wget       # Non-interactive downloader
+    httpie     # User-friendly HTTP client
+    xh         # Fast HTTPie-like client
 
     # Git tools
     gh         # GitHub CLI
     glab       # GitLab CLI
-    lazygit    # Git TUI
-    git-delta  # Better diffs
-    difftastic # Structural diffs
+    lazygit    # Terminal UI for Git
+    git-delta  # Syntax-highlighted diff pager
+    difftastic # Structural diff tool
   ];
 
   # Atuin configuration

@@ -8,21 +8,21 @@ in
 {
   home.packages = with pkgs; [
     # Video/Audio processing
-    ffmpeg
-    yt-dlp
+    ffmpeg     # Command-line audio/video toolkit
+    yt-dlp     # YouTube / video downloader
 
     # Image processing
-    imagemagick
-    gimp
+    imagemagick # Image conversion and processing
+    gimp        # GNU Image Manipulation Program
 
     # Media players
-    vlc
-    mpv
+    vlc        # VLC media player
+    mpv        # mpv media player
 
     # Audio
-    audacity
+    audacity   # Audio editor and recorder
   ] ++ lib.optionals isLinux [
     # Linux-specific
-    obs-studio  # Screen recording/streaming
+    obs-studio  # Screen recording/streaming studio
   ];
 }

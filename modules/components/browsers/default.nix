@@ -10,16 +10,16 @@ in
 {
   home.packages = with pkgs; [
     # Primary browsers (cross-platform)
-    firefox
-    chromium
+    firefox   # Mozilla Firefox web browser
+    chromium  # Open-source Chromium browser
 
     # Privacy-focused
-    librewolf
-    tor-browser-bundle-bin
+    librewolf             # Privacy-hardened Firefox fork
+    tor-browser-bundle-bin # Tor Browser bundle
   ] ++ lib.optionals isLinux [
     # Linux-only browsers
-    brave
-    ungoogled-chromium
+    brave             # Brave browser with built-in ad blocker
+    ungoogled-chromium # Chromium without Google integration
   ];
 
   # Firefox configuration via Home Manager

@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
-    chezmoi
+    chezmoi  # Dotfile manager
   ];
 
   # Note: We do NOT run 'chezmoi apply' automatically here.

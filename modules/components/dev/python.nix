@@ -4,20 +4,21 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Python package managers
-    uv        # Fast Python package installer
-    poetry    # Dependency management
-    pipx      # Install Python apps in isolation
+    uv        # Fast Python package installer and resolver
+    poetry    # Python dependency and virtualenv manager
+    pipx      # Install and run Python apps in isolated envs
 
     # Development tools
-    ruff      # Fast linter and formatter
-    mypy      # Static type checker
-    black     # Code formatter (fallback)
-    isort     # Import sorter
+    ruff      # Fast Python linter and formatter
+    mypy      # Static type checker for Python
+    black     # Opinionated code formatter (fallback)
+    isort     # Import sorter for Python files
 
     # Virtual environment tools
-    virtualenv
+    virtualenv # Create Python virtual environments
+    conda      # Conda package and environment manager
 
     # IPython for interactive development
-    python3Packages.ipython
+    python3Packages.ipython  # Enhanced interactive Python shell
   ];
 }

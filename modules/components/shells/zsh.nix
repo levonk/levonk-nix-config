@@ -1,15 +1,12 @@
 { pkgs, ... }: {
-  programs.zsh = {
-    enable = true;
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
+  # Just install the shell and tools, do NOT let Home Manager manage the config files
+  # because we use Chezmoi and a custom ZDOTDIR (~/.config/shells/zsh).
+  home.packages = with pkgs; [
+    zsh
+    zsh-autosuggestions
+    zsh-syntax-highlighting
+  ];
 
-    # Oh-My-Zsh plugin management via Nix is safer/faster than git cloning at runtime
-    oh-my-zsh = {
-      enable = true;
-      plugins = [ "git" "docker" "sudo" ];
-      theme = "robbyrussell"; # Fallback theme, Chezmoi likely overrides this via .zshrc
-    };
-  };
+  # Explicitly disable program management to avoid overwriting ~/.zshenv
+  programs.zsh.enable = false;
 }

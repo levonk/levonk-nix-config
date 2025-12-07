@@ -4,19 +4,19 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Package managers
-    nodejs_22  # LTS version as fallback
-    pnpm
-    yarn
-    bun
+    nodejs_22  # Node.js 22 LTS fallback runtime
+    pnpm       # Fast, disk-efficient Node package manager
+    yarn       # Alternative Node package manager
+    bun        # All-in-one JS runtime, bundler, and test runner
 
     # Development tools
-    typescript
-    typescript-language-server
-    nodePackages.prettier
-    nodePackages.eslint
+    typescript                # TypeScript compiler
+    typescript-language-server # LSP server for TypeScript
+    nodePackages.prettier     # Opinionated code formatter
+    nodePackages.eslint       # JavaScript/TypeScript linter
 
     # Build tools
-    esbuild
-    turbo
+    esbuild   # Extremely fast JS/TS bundler
+    turbo     # Turborepo build system/monorepo task runner
   ];
 }

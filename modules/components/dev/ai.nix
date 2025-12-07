@@ -3,10 +3,10 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Local LLM
-    ollama
+    #ollama  # Local LLM runtime and model manager
 
     # CLI tools
-    llm  # Simon Willison's LLM CLI
+    llm    # Simon Willison's LLM CLI for prompting local/remote models
 
     # Code assistance (IDE plugins managed separately)
   ];

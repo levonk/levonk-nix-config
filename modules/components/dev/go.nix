@@ -3,17 +3,17 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Go toolchain
-    go
+    go             # Go compiler and standard tooling
 
     # Development tools
-    gopls          # Language server
-    golangci-lint  # Linter
-    delve          # Debugger
-    gotools        # Various Go tools
-    go-tools       # staticcheck, etc.
+    gopls          # Go language server for editors
+    golangci-lint  # Fast Go linter aggregator
+    delve          # Go debugger
+    gotools        # Misc Go development tools
+    go-tools       # Static analysis tools (staticcheck, etc.)
 
     # Build tools
-    goreleaser     # Release automation
+    goreleaser     # Build and release automation for Go projects
   ];
 
   home.sessionVariables = {

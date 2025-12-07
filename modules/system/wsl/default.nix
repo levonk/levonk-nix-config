@@ -12,6 +12,6 @@
   };
 
   home.packages = with pkgs; [
-    wslu # WSL Utilities (wslview, wslact, etc.)
+    wslu  # WSL Utilities (wslview, wslact, etc.)
   ];
 }

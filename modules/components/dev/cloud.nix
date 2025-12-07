@@ -1,32 +1,21 @@
-# Cloud Development Tools
+# Cloud Development Tools (aggregator)
 # Ported from: levonk.vibeops.dev-cloud, levonk.vibeops.devops
 { pkgs, lib, ... }: {
+  imports = [
+    ./cloud-aws.nix
+    ./cloud-gcloud.nix
+    ./cloud-azure.nix
+    ./kubernetes-core.nix
+  ];
+
+  # Shared tools across cloud providers
   home.packages = with pkgs; [
-    # AWS
-    awscli2
-    aws-vault
-    ssm-session-manager-plugin
-
-    # Google Cloud
-    google-cloud-sdk
-
-    # Azure
-    azure-cli
-
-    # Kubernetes
-    kubectl
-    kubectx
-    k9s
-    helm
-    kustomize
-    stern  # Multi-pod log tailing
-
     # Infrastructure as Code
-    terraform
-    terragrunt
-    pulumi
+    opentofu  # Terraform-compatible IaC engine
+    terragrunt # DRY wrapper and orchestration for Terraform/Tofu
+    pulumi    # IaC using general-purpose languages
 
     # Other cloud tools
-    flyctl  # Fly.io
+    flyctl   # Fly.io CLI for deploying applications
   ];
 }

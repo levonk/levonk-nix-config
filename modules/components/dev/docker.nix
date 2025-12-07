@@ -3,20 +3,20 @@
 { pkgs, lib, ... }: {
   home.packages = with pkgs; [
     # Docker CLI and Compose
-    docker
-    docker-compose
+    docker          # Docker CLI client
+    docker-compose  # Docker Compose for multi-container apps
 
     # Container management
-    podman
-    buildah
-    skopeo
+    podman          # Daemonless container engine
+    buildah         # Build container images
+    skopeo          # Inspect/copy container images
 
     # Container UX
-    lazydocker
-    dive  # Explore Docker image layers
+    lazydocker      # TUI for managing Docker/Podman
+    dive            # Explore Docker image layers and image size
 
     # Container security
-    trivy  # Vulnerability scanner
+    trivy           # Container image vulnerability scanner
   ];
 
   # Docker CLI configuration

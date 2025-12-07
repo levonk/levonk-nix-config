@@ -1,10 +1,6 @@
-# Security Tier: Hardened
-# Stricter OS policies for remote servers and Qubes templates.
-# - USB restrictions (awareness/hints)
-# - Service minimization
-# - MFA hints
-# - Higher logging verbosity
-{ pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+
+{
   imports = [
     ./baseline.nix
   ];
@@ -51,22 +47,22 @@
   # Additional security packages
   home.packages = with pkgs; [
     # Audit and monitoring
-    lynis
+    lynis   # Security auditing tool for UNIX systems
 
     # File encryption
-    age
-    sops
+    age     # Simple, modern file encryption
+    sops    # Secrets management tool with YAML/JSON editing
 
     # Secure delete
-    srm
+    srm     # Secure file deletion utility
 
     # Network security
-    nmap
-    tcpdump
+    nmap    # Network scanner and mapper
+    tcpdump # Packet capture and analysis tool
 
     # Process monitoring
-    htop
-    btop
+    htop    # Interactive process viewer
+    btop    # Resource monitor with rich UI
   ];
 
   # Shell aliases for security awareness
@@ -79,4 +75,11 @@
     # Show hidden files by default
     "ls" = "ls -la";
   };
+
+  # On macOS, ensure the LuLu firewall is installed via Homebrew when the
+  # hardened profile is active. This extends any existing cask list instead of
+  # replacing it, and is a no-op on non-Darwin systems.
+  homebrew.casks =
+    (config.homebrew.casks or [])
+    ++ lib.optionals pkgs.stdenv.isDarwin [ "lulu" ];
 }

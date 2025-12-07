@@ -67,25 +67,25 @@
   # Security and forensics packages
   home.packages = with pkgs; [
     # Hardware token support
-    yubikey-manager
-    yubikey-personalization
+    yubikey-manager         # Manage YubiKey configuration
+    yubikey-personalization # Program YubiKey OTP/slots
 
     # Secure communications
-    age
-    sops
-    minisign
+    age                     # Simple file encryption
+    sops                    # Secrets management with structured files
+    minisign                # Lightweight cryptographic signing tool
 
     # Forensics and analysis
-    binwalk
-    foremost
+    binwalk                 # Analyze and extract data from binary blobs
+    foremost                # File carving tool for data recovery
 
     # Memory analysis
-    volatility3
+    volatility3             # Memory forensics framework
 
     # Secure networking
-    wireguard-tools
-    tor
-    torsocks
+    wireguard-tools         # WireGuard VPN tools
+    tor                     # Anonymizing network client
+    torsocks                # Wrap apps to route traffic through Tor
   ];
 
   # Strict shell configuration
