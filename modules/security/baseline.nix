@@ -5,6 +5,10 @@
 # - Logging configuration
 # - Basic SSH tightening
 { pkgs, lib, ... }: {
+  imports = [
+    ./privacy-darwin.nix
+  ];
+
   # SSH Client Hardening (Home Manager manages ~/.ssh/config)
   programs.ssh = {
     enable = true;
@@ -45,14 +49,14 @@
   # Security-focused packages
   home.packages = with pkgs; [
     # Password/Secret management CLI
-    pass
-    gopass
+    pass    # UNIX password manager (stores secrets in GPG-encrypted files)
+    gopass  # Community fork of pass with extra features
 
     # File integrity
-    rhash
+    rhash   # Compute and verify file checksums
 
     # Network diagnostics (non-invasive)
-    mtr
-    whois
+    mtr     # Network diagnostics (traceroute+ping)
+    whois   # Query WHOIS information for domains/IPs
   ];
 }
