@@ -16,12 +16,15 @@ in
     gimp        # GNU Image Manipulation Program
 
     # Media players
-    vlc        # VLC media player
-    mpv        # mpv media player
+    # vlc/mpv managed by brew on mac
 
     # Audio
     audacity   # Audio editor and recorder
   ] ++ lib.optionals isLinux [
+    spotify    # Music streaming
+    vlc
+    mpv
+
     # Linux-specific
     obs-studio  # Screen recording/streaming studio
   ];

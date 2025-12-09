@@ -9,6 +9,8 @@ in
 {
   home.packages = with pkgs; [
     # Chat/Messaging
+    # (macOS versions managed by Homebrew for better integration)
+  ] ++ lib.optionals isLinux [
     slack            # Slack desktop client
     discord          # Discord chat client
     signal-desktop   # Signal encrypted messenger
@@ -16,7 +18,7 @@ in
 
     # Video conferencing
     zoom-us          # Zoom video conferencing client
-  ] ++ lib.optionals isLinux [
+
     # Linux-specific
     element-desktop  # Matrix client for federated chat
   ];

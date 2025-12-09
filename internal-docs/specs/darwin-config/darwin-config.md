@@ -1,0 +1,134 @@
+## Finder
+- [x] in /home/micro/p/gh/levonk/levonk-nix-config make new finder windows on the mac default to my home directory instead of recents.
+- [x] make finder default with "open folders in tabs instead of new windows"
+- [x] make the default view the columnar layout 
+- [ ] in the sidebar disable Documents, Movies, Music, Pictures, iCloud Drive, Cloud Storage (Comment: Sidebar customization not supported by standard nix-darwin defaults)
+- [ ] Home folder should be first on list (Comment: Sidebar customization not supported)
+- [ ] Downloads #2 (Comment: Sidebar customization not supported)
+- [ ] Applications #3 (Comment: Sidebar customization not supported)
+- [ ] Desktop #4 (Comment: Sidebar customization not supported)
+- [ ] Airdrop #5 (Comment: Sidebar customization not supported)
+- [x] Don't "Show warning before changing an extension"
+- [ ] Don't "Show warning before emptying the Trash" (Comment: Not supported by standard nix-darwin defaults)
+- [ ] Don't "Remove items from the Trash after 30 days" (Comment: Not supported by standard nix-darwin defaults)
+- [x] Don't "Keep folders on top in windows or on desktop"
+- [x] Wen performing a search "Search current folder"
+- [x] View -> Show Path Bar
+- [x] View -> Show Status Bar
+- [ ] View -> Show Toolbar (Comment: Key not found in nix-darwin defaults)
+
+## Install Nix Package Manager
+- [ ] Download and run the official Nix installer from https://nixos.org/download
+- [ ] Follow the installation instructions for macOS
+- [ ] Verify installation with `nix --version`
+- Install the
+    - [x] Raycast.app
+    - [x] alt-tab
+    - [ ] XCode (Comment: Requires manual install or mas configuration)
+    - [x] hiddenbar
+    - [x] stats
+    - [x] itsycal
+        - [ ] Date format ddd YYYY-mm-dd (Comment: Manual configuration required)
+	- [x] firefox-developer-edition (in advanced cask versions)
+	- [x] slack (Brew on Mac, Nix on Linux)
+	- [x] discord (Brew on Mac, Nix on Linux)
+	- [x] signal (Brew on Mac, Nix on Linux)
+	- [x] telegram (Brew on Mac, Nix on Linux)
+	- [x] figma (Brew on Mac)
+	- [x] spotify (Brew on Mac, Nix on Linux)
+	- [x] android-platform-tools (Nix on Linux, Brew on Mac)
+	- [x] android-file-transfer (Brew on Mac)
+	- [x] vlc (Brew on Mac, Nix on Linux)
+	- [x] mergiraf (merge tool) (Nix CLI tool)
+	- [x] difftastic (diff tool) (Nix CLI tool)
+	- [x] convert (image conversion) (Added imagemagick via Nix)
+	- [x] pdftotext (pdf text extraction) (Added poppler_utils via Nix)
+	- [x] jp2a (image to ascii art - used by spaceman-diff) (Nix CLI tool)
+	- [x] spaceman-diff (terminal image diffs) (Nix CLI tool)
+	- [x] https://github.com/dmtrKovalenko/odiff (gui image diffs) (Nix CLI tool)
+	- [x] docker-desktop (Brew on Mac, Native Docker on Linux)
+	- [x] keka - archive tool (Brew on Mac)
+	- [x] kap - screen recording (Brew on Mac)
+	- [x] keycastr - keyboard visibility (Brew on Mac)
+	- [x] iterm2 - terminal (Brew on Mac)
+	- [x] visual-studio-code-insiders - code editor (Brew on Mac)
+	- [x] ffmpeg (Nix CLI tool)
+	- [x] imagemagixk (Added imagemagick via Nix)
+	- [ ] Paint.net (Windows only?) (Comment: Windows only application)
+
+## Raycast
+- [ ] Unassign Cmd-<SPACE> from "Settings->Keyboard->Spotlight->Show Spotlight search" (Comment: Manual step or complicated plist edit)
+- [ ] Set Raycast to respond to Cmd-<SPACE> (Comment: Manual step)
+- [ ] Disable Raycast clipboard history (Comment: Manual step)
+- [ ] Add Nix to Raycast (Comment: Manual step)
+- [ ] Set Raycast theme to dark (Comment: Manual step)
+- [ ] Set Raycast language to English (Comment: Manual step)
+- [ ] Enable "Show system extensions in Finder" (Comment: Manual step)
+- [ ] Set the shortcuts from /home/micro/p/gh/levonk/dotfiles/home/current/.chezmoitemplates/browser/search-toinstall.md (Comment: Manual step)
+
+## Misc
+- [ ] Widgets merge widgets stats battery is better than host (Comment: Manual step)
+- [ ] Time format HH:mm (Comment: Manual step)
+
+## Firefox-developer-edition
+- [ ] Set Firefox Developer Edition as default browser (Comment: Manual step)
+- [ ] Configure Firefox Developer Edition preferences (Comment: Manual or Home Manager required)
+- [ ] Remove Blank spaces from Firefox Tool Bar (Comment: Manual step)
+- [ ] Enable Bookmarks Bar (Comment: Manual step)
+- [ ] Set Firefox Developer Edition to open with "reuse windows from last time" (Comment: Manual step)
+- [ ] New Tabs default to "Blank Page" (Comment: Manual step)
+- [ ] New Windows default to "Blank Page" (Comment: Manual step)
+- [ ] set "Ask Where to Download files" (Comment: Manual step)
+- [ ] Add "uBlock Origin" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "CanvasBlocker" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Consent-O-Matic" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Copy PlainText" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Decentraleyes" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Don't track me Google" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Flagfox" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "FoxyProxy" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "FoxyTab" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Frame By Frame" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "List All Tabs" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "MarkDownload - Markdown Web Clipper" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "nuMatrix" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "OneTab" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Open Frame" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Port Authority" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Read Aloud: A Text to Speech Voice Reader" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Redirect Link" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Redirect YouTube Shorts to YouTube" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Return YouTube Dislike" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Save my tabs!" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Search by Image" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "SponsorBlock for YouTube - Skip Sponsorships" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Stop Auto Reload" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Tab Session Manager" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Tree Style Tab" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Web Archives" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Video DownloadHelper" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Privacy Badger" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Dark Reader" extension (Comment: Extension installation requires Home Manager or manual setup)
+	- [ ] Set Dark Reader mode to "Invert list only" (Comment: Manual configuration)
+	- [ ] Add WikiPedia.com to the Dark Reader to make dark list (Comment: Manual configuration)
+	- [ ] Add htmx.org to the Dark Reader to make dark list (Comment: Manual configuration)
+- [ ] Add "Allow Right-Click" extension by lulu https://webextension.org/listing/allow-right-click.html (Comment: Manual configuration)
+- [ ] Add "Bitwarden" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Add "Firefox Multi-Account Containers" extension (Comment: Extension installation requires Home Manager or manual setup)
+- [ ] Set Search shortcuts from /home/micro/p/gh/levonk/dotfiles/home/current/.chezmoitemplates/browser/search-toinstall.md (Comment: Manual configuration)
+- [ ] Set default search to DuckDuckGo (Comment: Manual configuration)
+- [ ] Turn off "Ask to save passwords" (Comment: Manual configuration)
+- [ ] Turn off "Save and fill payment methods" (Comment: Manual configuration)
+- [ ] Turn off "Remember search and form history" (Comment: Manual configuration)
+- Disable Data Collection / Telemetry
+	- [ ] Uncheck "Allow Firefox Developer Edition to make personalized extension recommendations" (Comment: Manual configuration)
+	- [ ] Uncheck "Allow Firefox Developer Edition to send technical and interaction data to Mozilla" (Comment: Manual configuration)
+	- [ ] Uncheck "Allow Firefox Developer Edition to install and run studies" (Comment: Manual configuration)
+	- [ ] Uncheck "Allow Firefox Developer Edition to send backlogged crash reports on your behalf" (Comment: Manual configuration)
+
+
+## iTerm
+- [ ] Set theme to "Dracula" (Comment: Manual configuration required)
+- [ ] "Natural Text Editing" (Comment: Manual configuration required)
+- [ ] Set front color to lime green (Comment: Manual configuration required)
+- [x] Install Jetbrains-mono-font-full (Installed nerd-fonts.jetbrains-mono via gui.nix)

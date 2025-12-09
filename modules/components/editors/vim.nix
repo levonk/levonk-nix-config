@@ -1,5 +1,6 @@
 { pkgs, ... }: {
   home.packages = with pkgs; [
+    helix
     # Neovim
     neovim
     # Vim (sometimes needed for lightweight editing)
