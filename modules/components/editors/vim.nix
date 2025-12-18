@@ -5,6 +5,7 @@
     neovim
     # Vim (sometimes needed for lightweight editing)
     vim
+    universal-ctags
   ];
 
   programs.neovim = {
