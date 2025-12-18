@@ -1,6 +1,6 @@
 { ... }: {
   imports = [
-    ../tools/core.nix
+    ../tools/interactive.nix
     ../../system/chezmoi.nix
     ../tools/direnv.nix
     ../nix/settings.nix
