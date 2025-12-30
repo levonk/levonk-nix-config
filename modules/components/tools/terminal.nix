@@ -8,9 +8,10 @@
 
     # Modern CLI tools
     atuin      # Encrypted, searchable shell history
-    zoxide     # Smarter cd with frecency
+    zoxide     # Smarter cd with recency
     tealdeer   # tldr pages for quick command examples
     fd         # Better find
+	fzf        # Fuzzy finder
     sd         # Intuitive sed replacement
     procs      # Modern ps replacement
     dust       # Disk usage analyzer (du replacement)
@@ -41,8 +42,8 @@
     xh         # Fast HTTPie-like client
 
     # Git tools
-    gh         # GitHub CLI
     glab       # GitLab CLI
+	fzf-git-sh # Fuzzy git and shell history
     lazygit    # Terminal UI for Git
     git-delta  # Syntax-highlighted diff pager
     difftastic # Structural diff tool

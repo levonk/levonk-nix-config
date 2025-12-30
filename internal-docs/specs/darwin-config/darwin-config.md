@@ -1,7 +1,7 @@
 ## Finder
 - [x] in /home/micro/p/gh/levonk/levonk-nix-config make new finder windows on the mac default to my home directory instead of recents.
 - [x] make finder default with "open folders in tabs instead of new windows"
-- [x] make the default view the columnar layout 
+- [x] make the default view the columnar layout
 - [ ] in the sidebar disable Documents, Movies, Music, Pictures, iCloud Drive, Cloud Storage (Comment: Sidebar customization not supported by standard nix-darwin defaults)
 - [ ] Home folder should be first on list (Comment: Sidebar customization not supported)
 - [ ] Downloads #2 (Comment: Sidebar customization not supported)
@@ -132,3 +132,42 @@
 - [ ] "Natural Text Editing" (Comment: Manual configuration required)
 - [ ] Set front color to lime green (Comment: Manual configuration required)
 - [x] Install Jetbrains-mono-font-full (Installed nerd-fonts.jetbrains-mono via gui.nix)
+
+## macOS Hardening & Security
+- [ ] Network -> Firewall -> Enable Firewall (Manual or scripted)
+- [ ] Network -> Firewall -> Options -> Enable "Stealth Mode" (Automated: `system.defaults.alf.stealthenabled = 1`)
+- [ ] Network -> Firewall -> Options -> Block all incoming connections (Automated: `system.defaults.alf.globalstate = 1` blocks listening services, 2 blocks all)
+- [ ] Privacy & Security -> FileVault -> Turn On (Manual: requires user interaction)
+- [ ] Privacy & Security -> Lockdown Mode -> Turn On (Manual)
+- [ ] Privacy & Security -> Analytics & Improvements -> Disable "Share Mac Analytics" (Manual)
+- [ ] Privacy & Security -> Apple Advertising -> Disable "Personalized Ads" (Manual)
+- [ ] Privacy & Security -> Location Services -> Disable for unused apps/system services (Manual)
+
+## Keyboard & Trackpad
+- [ ] Keyboard -> Key repeat rate -> Fast (All the way right) (Automated: `system.defaults.NSGlobalDomain.KeyRepeat = 2`)
+- [ ] Keyboard -> Delay until repeat -> Short (All the way right) (Automated: `system.defaults.NSGlobalDomain.InitialKeyRepeat = 15`)
+- [ ] Keyboard -> Press Globe key to -> "Show Emoji & Symbols" (Manual)
+- [ ] Pointer Control -> Ignore built-in trackpad when mouse or wireless trackpad is present (Manual)
+- [ ] Trackpad -> Tracking speed -> Increase (4 spaces from left, 5 spaces from right) (Automated: `system.defaults.NSGlobalDomain."com.apple.trackpad.scaling"`)
+
+## General System Preferences
+- [ ] General -> Sharing -> Disable all unused services (File, Media, Screen, Bluetooth Sharing, etc.) (Manual check, mostly off by default)
+- [ ] Desktop & Dock -> Close windows when quitting an application -> On (Automated: `system.defaults.NSGlobalDomain.NSQuitAlwaysKeepsWindows = false`)
+- [ ] Desktop & Dock -> Ask to keep changes when closing documents -> On (Manual)
+- [ ] Displays -> Night Shift -> Schedule "Custom" (e.g., 9:00 PM to 6:00 AM) (Manual or scripted `corebrightnessd`)
+- [ ] Lock Screen -> Require password after screen saver begins -> "After 5 seconds" (Automated: `system.defaults.screensaver.askForPasswordDelay = 5`)
+
+## Control Center
+- [ ] Battery -> Show Percentage -> On (Automated: `system.defaults.menuExtraClock.ShowSeconds` / Battery specific plist)
+- [ ] Clock -> Show date -> "When space allows" (Automated: `system.defaults.menuExtraClock.ShowDate = 1`)
+- [ ] Clock -> Show day of the week -> On (Automated: `system.defaults.menuExtraClock.ShowDayOfWeek = 1`)
+- [ ] Clock -> Time Style -> Digital (Automated: `system.defaults.menuExtraClock.IsAnalog = 0`)
+- [ ] Clock -> Show seconds -> On (Automated: `system.defaults.menuExtraClock.ShowSeconds = 1`)
+- [ ] Spotlight -> Disable unused categories (Fonts, Bookmarks, etc.) (Manual)
+
+## Software Updates
+- [ ] Automatic Updates -> Check for updates -> On (Automated: `system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true`)
+- [ ] Automatic Updates -> Download new updates -> On (Automated: `system.defaults.SoftwareUpdate.AutomaticDownload = 1`)
+- [ ] Automatic Updates -> Install macOS updates -> On (Automated: `system.defaults.SoftwareUpdate.AutomaticallyInstallMacOSUpdates = true`)
+- [ ] Automatic Updates -> Install App Store updates -> On (Automated: `system.defaults.SoftwareUpdate.AutomaticCheckEnabled = true`)
+- [ ] Automatic Updates -> Install Security Responses -> On (Automated: `system.defaults.SoftwareUpdate.ConfigDataInstall = true`)

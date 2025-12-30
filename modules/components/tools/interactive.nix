@@ -21,22 +21,24 @@
     eza      # Modern ls replacement
     fd       # Simple, fast find alternative
     zoxide   # Smarter cd with frecency
-    delta    # Diffs
-    difftastic # Diffs
-    mergiraf # Merges
-    imagemagick # convert
-    poppler_utils # pdftotext
+    delta           # Diffs
+    difftastic      # Diffs
+    merigraf        # Merges
+    imagemagick     # convert
+    poppler_utils   # pdftotext
+    chafa           # Images in terminal
     spaceman-diff
     jp2a
     odiff
     android-tools
-    sqlite3
+    sqlite
     tlrc     # tldr in rust for man pages
     thefuck  # typo correction
-	mc       # Midnight Commander dual pane file management
-	ranger       # Ranger triple pane file management
-	trash-cli    # Trash CLI
-	rmtrash    # rmtrash alias rm to trash cli tools
+    mc       # Midnight Commander dual pane file management
+    ranger       # Ranger triple pane file management
+    yazi         # Blazing fast TUI file manager
+    trash-cli    # Trash CLI
+    rmtrash    # rmtrash alias rm to trash cli tools
 
     # Monitoring
     htop     # Interactive process viewer
