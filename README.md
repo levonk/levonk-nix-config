@@ -41,10 +41,18 @@ This script will:
     ```bash
     curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install
     ```
-*   **Experimental Features**: Enable flakes.
+*   **Experimental Features**: Enable flakes (choose one option):
+    
+    **Option 1: Global (Recommended)** - System-wide configuration:
+    ```bash
+    sudo mkdir -p /etc/nix
+    sudo cp etc/nix/nix.conf /etc/nix/nix.conf
+    ```
+    
+    **Option 2: User-level** - Per-user configuration:
     ```bash
     mkdir -p ~/.config/nix
-    echo "experimental-features = nix-command flakes" >> ~/.config/nix/nix.conf
+    cp etc/nix/nix.conf ~/.config/nix/nix.conf
     ```
 
 ### 3. Apply Configuration

@@ -2,12 +2,13 @@
   imports = [
     ../../modules/system/darwin/defaults.nix
     ../../modules/system/darwin/homebrew.nix
+    ../../modules/components/nix/settings.nix
+    ../../modules/components/nix/cache.nix
   ];
 
   # Nix-Darwin configuration
   system.stateVersion = 4;
   services.nix-daemon.enable = true;
-  nix.settings.experimental-features = "nix-command flakes";
 
   # Define a user account for nix-darwin to manage (needed for home-manager)
   users.users.useracct = {
